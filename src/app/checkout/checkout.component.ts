@@ -14,19 +14,31 @@ export class CheckoutComponent implements OnInit {
 
 
   jsonData: any = [];
+  dummyArray: any = [];
 
   constructor(private dataservice: ServicesService) { }
 
   ngOnInit() {
 
+    if (JSON.parse(localStorage.getItem("arr")) == null) {
+      this.dummyArray = [];
+    }
+    else {
+      this.dummyArray = JSON.parse(localStorage.getItem("arr"))
+    }
+
     this.dataservice.detailData$.pipe(takeWhile(() => this.alive)).subscribe(
       (data) => {
-        this.jsonData.push(data)
-        this.jsonData.forEach(element => {
-          this.CheckoutAmount += Number(element.price)
-        });
+        this.dummyArray.push(data);
+        localStorage.setItem("arr", JSON.stringify(this.dummyArray));
       }
     );
+
+    this.jsonData = this.dummyArray.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i)
+
+    this.jsonData.forEach(element => {
+      this.CheckoutAmount += Number(element.price)
+    });
 
   }
 
