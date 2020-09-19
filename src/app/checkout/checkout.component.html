@@ -1,0 +1,46 @@
+<div *ngIf="jsonData.length !=0">
+
+  <div *ngFor="let jsn of jsonData">
+    <div class="card mt-3 mr-5">
+      <div class="card-header">
+        <b>{{jsn.productName}}</b>
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <div class="d-flex w-100">
+            <div>
+              <p class="text-justify w-75">{{jsn.details}}</p>
+            </div>
+  
+            <div>
+              <img [src]="jsn.img" class="card-img-top m-auto" alt="..." style="width: 20rem;">
+            </div>
+  
+          </div>
+          
+  
+          <footer class="blockquote-footer">
+            <span *ngFor="let item of [].constructor(5); let k = index" class="fa fa-star mt-4 ml-3"
+            [ngClass]="{'checked': jsn.star > k}">
+          </span>
+          <span class="mr-5">
+            <cite title="Source Title" >&nbsp;&nbsp;&nbsp;&nbsp;<b> ${{jsn.price}}</b></cite>
+          </span> 
+         
+        </footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="w-50 text-center pull-right">
+    <button type="button" class="btn btn-dark w-75 ">checkout ${{CheckoutAmount}} </button>
+  </div>
+
+</div>
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+<div class="d-flex"
+    *ngFor="let fnlJsn of finalJson| paginate: { itemsPerPage: 2, currentPage: pageNumber }; let i = index">
+    <div class="d-flex" *ngFor="let jsn of fnlJsn; let j = index">
+        <div class="card m-4" style="width: 15rem;height: 12rem;">
+            <a class="nav-item nav-link-edit m-auto" (click)="detailDataPassing(jsn)" [routerLink]="['/details']">
+                <div class="card-header m-auto" style="background-color: white !important;">
+                    <img [src]="jsn.img" class="card-img-top m-auto" alt="..." style="width: 5rem;">
+                </div>
+            </a>
+
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="w-50"><a class="nav-item nav-link-edit" (click)="detailDataPassing(jsn)" [routerLink]="['/details']"><b
+                                style="color: black !important;">{{jsn.productName}}</b></a></div>
+                    <div class="w-50"><b class="pull-right">${{jsn.price}}</b></div>
+                </div>
+                <div class="d-flex">
+                    <div class="w-50 small">
+                        <div style="color:rgba(0,0,0,.425)">{{jsn.productType}}</div>
+                        <div style="font-size:75%">
+                            <span *ngFor="let item of [].constructor(5); let k = index" class="fa fa-star"
+                                [ngClass]="{'checked': jsn.star > k}"></span>
+                        </div>
+                    </div>
+                    <div class="w-50"><i class="fa fa-cart-plus fa-2x pull-right" aria-hidden="true" (click)="detailDataPassing(jsn)" [routerLink]="['/checkout']"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <pagination-controls (pageChange)="pageNumber = $event" maxSize="5"></pagination-controls>
+</div>

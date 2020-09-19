@@ -1,0 +1,57 @@
+<div class="d-flex" id="wrapper">
+
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-dark" id="menu-toggle" style="padding: 0;">
+        <div style="width: 20px; height: 3px; background-color: white; margin: 6px 7px;"></div>
+        <div style="width: 20px; height: 3px; background-color: white; margin: 6px 7px;"></div>
+        <div style="width: 20px; height: 3px; background-color: white; margin: 6px 7px;"></div>
+      </button>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="d-flex mb-2">
+        <div class="w-25 ml-5">
+          <a class="nav-item nav-link-edit" [routerLink]="['/dashboard']">
+            <b style="color: black !important;">HOME</b>
+          </a>
+        </div>
+        <div class="w-25 ml-5">
+          <a><b>SHOP</b></a>
+        </div>
+        <div class="w-25 ml-5">
+          <a><b>MAGAZINE</b></a>
+        </div>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active  ml-4 mt-2">
+            <div class="d-flex form-group">
+             
+              <i class="fa fa-search fa-1x mt-2" aria-hidden="true"></i>
+              
+              <input type="text" class="form-control ml-2" id="usr" (keyup)="sendData($event)">
+            </div>
+          </li>
+          <li class="nav-item active ml-4 mt-2">
+            <i class="fa fa-shopping-cart fa-2x pull-right" aria-hidden="true"></i>
+          </li>
+          <li class="nav-item active ml-4 mt-2">
+            <a><b>LOGIN</b></a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+    <div class="d-flex" id="wrapper">
+      <app-side-nav></app-side-nav>
+      <div style="margin-top:2%; margin-left:10%;">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
